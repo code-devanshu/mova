@@ -1,0 +1,224 @@
+{
+ "_note": "Placeholder imagery for the MOVA demo. Unsplash photos are under the Unsplash License; StockSnap photos are CC0 (via Openverse). Replace with MOVA's own work before launch.",
+ "creator-mountain": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1492691527719-9d1e07e534b4"
+ },
+ "clapper": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1485846234645-a62644f84728"
+ },
+ "projector": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1478720568477-152d9b164e26"
+ },
+ "edit-timeline": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1574717024653-61fd2cf4d44d"
+ },
+ "bts-hands-camera": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1520390138845-fd2d229dd553"
+ },
+ "boombox": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1487180144351-b8472da7d491"
+ },
+ "creator-forest": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1542038784456-1ea8e935640e"
+ },
+ "studio-softbox": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1471341971476-ae15ff5dd4ea"
+ },
+ "street-photographer": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1493863641943-9b68992a8d07"
+ },
+ "events-lasers": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1514525253161-7a46d19cd819"
+ },
+ "events-phones": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1506157786151-b8491531f063"
+ },
+ "music-studio": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1598488035139-bdbb2231ce04"
+ },
+ "events-confetti": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1505236858219-8359eb29e329"
+ },
+ "corporate-conference": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1523580494863-6f3031224c94"
+ },
+ "events-confetti-night": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1492684223066-81342ee5ff30"
+ },
+ "corporate-suit": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1507679799987-c73779587ccf"
+ },
+ "ideas-wall": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1552664730-d307ca884978"
+ },
+ "drone-pilot": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1506947411487-a56738267384"
+ },
+ "product-headphones": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1505740420928-5e560c06d30e"
+ },
+ "product-sneaker-black": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1491553895911-0055eca6402d"
+ },
+ "product-sneakers-colour": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1560769629-975ec94e6a86"
+ },
+ "social-grid-phone": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1516251193007-45ef944ab0c6"
+ },
+ "brand-teal": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1509631179647-0177331693ae"
+ },
+ "brand-yellow": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1515886657613-9f3515b0c78f"
+ },
+ "creator-red-top": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1529139574466-a303027c1d8b"
+ },
+ "creator-hoodie": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1517841905240-472988babdf9"
+ },
+ "artist-portrait-blue": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1534528741775-53994a69daeb"
+ },
+ "brand-mirror": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1488161628813-04466f872be2"
+ },
+ "mixing-console": {
+  "source": "Unsplash (Unsplash License)",
+  "id": "1618609378039-b572f64c5b42"
+ },
+ "artist-smoke": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Concert Singer",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/F66MXRQS1K.jpg"
+ },
+ "artist-blue": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "People Man",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/SYFRQ71FS5.jpg"
+ },
+ "artist-red-jacket": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Spotlight Music",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/9YNG14PQJO.jpg"
+ },
+ "drone-roundabout": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Drone Road",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/H7TMQYULGL.jpg"
+ },
+ "drone-tide": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Drone Boat",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/JLOBSJQH6K.jpg"
+ },
+ "drone-sunset": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Drone Sunset",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/VIBFVCPKHX.jpg"
+ },
+ "drone-dirt-road": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Drone Aerial",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/WDXDQMTKRZ.jpg"
+ },
+ "drone-snow-forest": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Drone River",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/KAHDUVMH1V.jpg"
+ },
+ "events-holi": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "People Crowd",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/GQ3TV02RS6.jpg"
+ },
+ "events-fire": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "People Men",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/BTT0E1H0TJ.jpg"
+ },
+ "corporate-glass": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Office Work",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/HZCASACP3N.jpg"
+ },
+ "product-car-cover": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Car Paintjob",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/90734C8136.jpg"
+ },
+ "night-road": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Car Driving",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/B5SGRP8EU7.jpg"
+ },
+ "bts-crew-dark": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "People Man",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/PT8C3EOE19.jpg"
+ },
+ "bts-tripod-warm": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Behind Camera",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/2A2DRNKRAO.jpg"
+ },
+ "social-phone-tripod": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Phone Cellphone",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/0JEW2MP5JW.jpg"
+ },
+ "social-phone-sky": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Phone Cellphone",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/7RKZDIDV7Z.jpg"
+ },
+ "bts-mic-bw": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Guy Singing",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/NV1FLKIE9U.jpg"
+ },
+ "brand-skate-yellow": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Skateboarder Sidewalk",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/NH8J97NEVN.jpg"
+ },
+ "events-phone-concert": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Concert Festival",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/4CNNMKE9IQ.jpg"
+ },
+ "music-turntable": {
+  "source": "StockSnap via Openverse (CC0)",
+  "title": "Dj Record",
+  "url": "https://cdn.stocksnap.io/img-thumbs/960w/ZSOYMYCJAZ.jpg"
+ }
+}

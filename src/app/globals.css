@@ -1,0 +1,434 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/*
+  MOVA design tokens
+  Themes: "darkroom" (dark, the default) and "light table" (light). The visitor's system setting
+  picks one, the toggle in the nav overrides it. The boot script in layout.tsx sets
+  <html data-theme> before first paint.
+  Accent: REC red, the recording light on a camera. Used for live states and key verbs only.
+  Shape: all-sharp. Frames are rectangles, so nothing on the site has a border radius.
+*/
+
+/* Light-theme-only tweaks, e.g. light:translate-x-full. */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+:root {
+  --nav-h: 4rem;
+}
+@media (min-width: 48rem) {
+  :root {
+    --nav-h: 4.5rem;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@theme {
+  /* Fixed colours: the same in both themes. For text and marks on photos, on the red,
+     and inside always-dark pieces (the film strip, the next-project band). */
+  --color-ink: #0b0b0c;
+  --color-paper: #eeece7;
+  --color-rec: #e8452c;
+
+  /* Theme colours: dark values here, light values in [data-theme="light"] below. */
+  --color-canvas: #0b0b0c; /* page background */
+  --color-surface: #131315; /* cards, image placeholders */
+  --color-fg: #eeece7; /* text */
+  --color-mute: #8e8b85; /* secondary text */
+  --color-dim: #4a4845; /* decorative separators */
+  --color-line: rgb(238 236 231 / 0.14);
+  --color-line-strong: rgb(238 236 231 / 0.32);
+  --color-rec-fg: #e8452c; /* red for small text (labels, errors); deepened on light to stay readable */
+
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-cine: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* "Light table": the same two neutrals flipped, ink on paper. Contrast is AA (4.5:1+) for all text colours. */
+[data-theme="light"] {
+  color-scheme: light;
+  --color-canvas: #eeece7;
+  --color-surface: #f7f6f2;
+  --color-fg: #0b0b0c;
+  --color-mute: #66635d;
+  --color-dim: #aeaba4;
+  --color-line: rgb(11 11 12 / 0.12);
+  --color-line-strong: rgb(11 11 12 / 0.3);
+  --color-rec-fg: #bf3720;
+}
+
+/*
+  Z-index scale (the only z-indexes used in the project):
+  nav 40 / mobile menu 45 / page transition 70 / preloader 80 / grain 90
+*/
+@utility z-nav {
+  z-index: 40;
+}
+@utility z-menu {
+  z-index: 45;
+}
+@utility z-transition {
+  z-index: 70;
+}
+@utility z-preloader {
+  z-index: 80;
+}
+@utility z-grain {
+  z-index: 90;
+}
+
+/* Display type: Archivo with its width axis, so headlines can stretch and condense. */
+@utility type-display {
+  font-family: var(--font-archivo), ui-sans-serif, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.86;
+  letter-spacing: -0.012em;
+  font-variation-settings: "wdth" var(--wdth, 72);
+}
+
+/* Small technical labels (timecodes, numbers, formats). */
+@utility type-label {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@utility wdth-* {
+  --wdth: --value(integer);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: var(--color-rec);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-rec);
+    outline-offset: 3px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+/* ---------- Viewfinder frame corners ---------- */
+.corners {
+  --c: 16px;
+  --t: 1.5px;
+  --o: 0px;
+}
+.corners > i {
+  position: absolute;
+  width: var(--c);
+  height: var(--c);
+  border: 0 solid currentColor;
+  transition:
+    transform 0.5s var(--ease-expo),
+    opacity 0.4s var(--ease-expo);
+}
+.corners > i:nth-child(1) {
+  top: 0;
+  left: 0;
+  border-top-width: var(--t);
+  border-left-width: var(--t);
+  transform: translate(calc(var(--o) * -1), calc(var(--o) * -1));
+}
+.corners > i:nth-child(2) {
+  top: 0;
+  right: 0;
+  border-top-width: var(--t);
+  border-right-width: var(--t);
+  transform: translate(var(--o), calc(var(--o) * -1));
+}
+.corners > i:nth-child(3) {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: var(--t);
+  border-left-width: var(--t);
+  transform: translate(calc(var(--o) * -1), var(--o));
+}
+.corners > i:nth-child(4) {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: var(--t);
+  border-right-width: var(--t);
+  transform: translate(var(--o), var(--o));
+}
+
+/* "Focus lock": corners sit outside the element and snap in on hover/focus. */
+.corners-lock > i {
+  opacity: 0;
+  --o: 10px;
+}
+.group:hover .corners-lock > i,
+.group:focus-visible .corners-lock > i {
+  opacity: 1;
+  --o: 0px;
+}
+
+/* ---------- REC light ---------- */
+@keyframes rec-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0.15;
+  }
+}
+.rec-dot {
+  display: inline-block;
+  width: 0.55em;
+  height: 0.55em;
+  border-radius: 999px; /* the one round thing on the site: it's a light, not a shape */
+  background-color: var(--color-rec);
+  animation: rec-blink 1.4s steps(1, end) infinite;
+}
+
+/* ---------- Sound toggle: level meter (flat when muted, dancing while the score plays) ---------- */
+.eq {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+.eq > i {
+  width: 2px;
+  height: 100%;
+  background-color: currentColor;
+  transform: scaleY(0.15);
+  transform-origin: bottom;
+  transition: transform 0.4s var(--ease-expo);
+}
+[aria-pressed="true"] .eq > i {
+  animation: eq-level 1.2s ease-in-out infinite alternate;
+}
+[aria-pressed="true"] .eq > i:nth-child(2) {
+  animation-duration: 0.9s;
+  animation-delay: -0.3s;
+}
+[aria-pressed="true"] .eq > i:nth-child(3) {
+  animation-duration: 1.4s;
+  animation-delay: -0.7s;
+}
+[aria-pressed="true"] .eq > i:nth-child(4) {
+  animation-duration: 1.05s;
+  animation-delay: -0.5s;
+}
+@keyframes eq-level {
+  from {
+    transform: scaleY(0.2);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ---------- Film grain (fixed, never on scrolling containers) ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.075;
+  mix-blend-mode: overlay;
+}
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation: grain-shift 0.9s steps(5) infinite;
+}
+@keyframes grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-6%, 4%);
+  }
+  40% {
+    transform: translate(5%, -7%);
+  }
+  60% {
+    transform: translate(-3%, 8%);
+  }
+  80% {
+    transform: translate(7%, 2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* ---------- Hero legibility scrim (fades the drum into the page, bottom-left) ---------- */
+.hero-scrim {
+  background: radial-gradient(
+    120% 90% at 0% 100%,
+    color-mix(in srgb, var(--color-canvas) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-canvas) 55%, transparent) 38%,
+    transparent 70%
+  );
+}
+
+/* ---------- Theme switch ---------- */
+/* The new theme opens out from the toggle like a frame (the clip-path is animated in lib/theme.ts). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+/* Colours change in one cut while switching; only the toggle itself keeps its motion. */
+html.theme-switching *:not(.theme-toggle, .theme-toggle *),
+html.theme-switching *:not(.theme-toggle, .theme-toggle *)::before,
+html.theme-switching *:not(.theme-toggle, .theme-toggle *)::after {
+  transition: none !important;
+}
+
+/* ---------- Film strip sprocket holes ---------- */
+.sprockets {
+  height: 14px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent 0 10px,
+    rgb(238 236 231 / 0.1) 10px 22px,
+    transparent 22px 34px
+  );
+}
+
+/* ---------- Camera roll -> feed (animated with GSAP Flip) ---------- */
+.cam-roll {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+.cam-roll > * {
+  aspect-ratio: 1;
+}
+.cam-roll[data-state="feed"] {
+  grid-template-columns: 1fr 1.25fr 1fr;
+  align-items: center;
+  gap: 14px;
+}
+.cam-roll[data-state="feed"] > :not([data-pick]) {
+  display: none;
+}
+.cam-roll[data-state="feed"] {
+  align-items: start;
+}
+.cam-roll[data-state="feed"] > [data-pick] {
+  aspect-ratio: 4 / 5;
+}
+/* A staggered triptych, like three posts landing in a feed. */
+.cam-roll[data-state="feed"] > [data-pick="1"] {
+  margin-top: 18%;
+}
+.cam-roll[data-state="feed"] > [data-pick="3"] {
+  margin-top: 30%;
+}
+
+/* ---------- Globe labels (pinned to cobe markers with CSS anchor positioning) ---------- */
+.globe-label {
+  position: absolute;
+  display: none;
+  white-space: nowrap;
+  pointer-events: none;
+}
+@supports (anchor-name: --a) {
+  .globe-label {
+    display: block;
+    transition: opacity 0.4s;
+  }
+  .globe-label-delhi {
+    position-anchor: --cobe-delhi;
+    top: anchor(bottom);
+    left: anchor(right);
+    margin: 10px 0 0 12px;
+    opacity: var(--cobe-visible-delhi, 0);
+  }
+  .globe-label-chandigarh {
+    position-anchor: --cobe-chandigarh;
+    bottom: anchor(top);
+    right: anchor(left);
+    margin: 0 12px 10px 0;
+    opacity: var(--cobe-visible-chandigarh, 0);
+  }
+}
+
+/* ---------- Marquee ---------- */
+.marquee-track {
+  will-change: transform;
+}
+
+/* ---------- SplitText helpers ---------- */
+.split-line-mask {
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+
+/*
+  Intro overlay: only shown when JS + motion are available and it hasn't played this session.
+  Flags are set by the inline boot script in layout.tsx before first paint.
+*/
+[data-preloader] {
+  display: none;
+}
+html.js-motion:not([data-intro="done"]):not(.motion-failsafe) [data-preloader] {
+  display: flex;
+}
+
+/* Hero pieces wait for their entrance; the failsafe shows them if scripts never arrive. */
+html.js-motion [data-hero-in] {
+  visibility: hidden;
+}
+html.motion-failsafe [data-hero-in] {
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rec-dot {
+    animation: none;
+  }
+  /* Still reads as "on": raised bars instead of dancing ones. */
+  [aria-pressed="true"] .eq > i {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+  html.js-motion [data-hero-in] {
+    visibility: visible;
+  }
+}
